@@ -1,5 +1,6 @@
 import React from "react";
 import Dictionary from "../models/Dictionary";
+import { observer } from "mobx-react";
 
 const AddDictionary = ({store}) => {
 
@@ -30,4 +31,4 @@ const AddDictionary = ({store}) => {
     )
 };
 
-export default AddDictionary;
+export default observer(AddDictionary);
