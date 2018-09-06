@@ -24,10 +24,10 @@ class App extends Component {
     this.setState({dictionaries});
   }
 
-  handleAddElement = (id, name, domain, range) => {
-    console.log(name);
+  handleAddElement = (name, domain, range) => {
     const element = new Element(name, domain, range);
     const dictionaries = {...this.state.dictionaries};
+    const id = Date.now();
     dictionaries[id].elements[Date.now()] = element;
     this.setState({dictionaries});
     console.log(dictionaries);
