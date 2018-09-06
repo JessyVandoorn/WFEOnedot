@@ -1,17 +1,22 @@
+import Dictionary from '../models/Dictionary';
 import {decorate, observable, action} from 'mobx';
 
 class Store {
-    dictionaries = [];
+    dictionaryArray = [];
+
+    constructor(){
+        this.addDictionary(new Dictionary("colors", "stonegrey", "darkgrey"));
+    }
 
     addDictionary = dictionary => {
-        this.dictionaries.push(dictionary);
-        console.log(this.dictionaries);
+        this.dictionaryArray[`${dictionary.name}`] = {dictionary};
+        console.log(this.dictionaryArray);
     }
 
 };
 
 decorate(Store, {
-    dictionaries: observable,
+    dictionaryArray: observable,
     addDictionary: action
 })
 

@@ -6,8 +6,8 @@ const AddDictionary = ({store}) => {
     const handleSubmitForm = e => {
         e.preventDefault();
         const form = e.currentTarget;
-        if(form.domain.value){
-            const dictionary = new Dictionary(form.domain.value, form.range.value);
+        if(form.name.value){
+            const dictionary = new Dictionary(form.name.value, form.domain.value, form.range.value);
             store.addDictionary(dictionary);
             form.reset();
         }
@@ -15,6 +15,9 @@ const AddDictionary = ({store}) => {
 
     return(
         <form onSubmit={handleSubmitForm}>
+            <label htmlFor="">Name Directionary
+                <input type="text" name="name"/>
+            </label>
             <label htmlFor="">Domain
                 <input type="text" name="domain"/>
             </label>

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../css/App.css';
 import AddDictionary from "../components/AddDictionary";
 import Dictionaries from "../components/Dictionaries";
+import {observer} from "mobx-react";
 
 class App extends Component {
   render() {
@@ -14,11 +15,11 @@ class App extends Component {
         </article>
         <article>
           <h2>Overview dictionaries</h2>
-          <Dictionaries dictionaries={store.dictionaries}/>
+          <Dictionaries dictionaries={store.dictionaryArray}/>
         </article>
       </div>
     );
   }
 }
 
-export default App;
+export default observer(App);
