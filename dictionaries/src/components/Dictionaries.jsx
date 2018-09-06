@@ -1,14 +1,18 @@
 import React from "react";
 import { observer } from "mobx-react";
 
-const Dictionaries = ({ dictionaries }) => {
+const Dictionaries = ({ dictionaries, store }) => {
+    const handleRemove = (e) => {
+        console.log(e);
+        //store.removeDictionary(e);
+    }
 
     return (
         <table>
             <thead>
                 <tr>
                     <td>Domain</td>
-                    <td>Range</td>
+                    {/* <td>Range</td> */}
                     <td>Remove</td>
                 </tr>
             </thead>
@@ -17,10 +21,11 @@ const Dictionaries = ({ dictionaries }) => {
                 console.log(dictionaries[item].dictionary);
                 return (
                     <tbody>
-                        <tr key={dictionaries[item].dictionary.name} colSpan="2">
+                        <tr key={dictionaries[item].dictionary.name}>
                             <td>{dictionaries[item].dictionary.name}</td>
+                            <td><button onClick={handleRemove}>Remove</button></td>
                         </tr>
-                        <tr key={dictionaries[item].dictionary.id}>
+                        {/* <tr key={dictionaries[item].dictionary.id}>
                             <input type="text" value={dictionaries[item].dictionary.domain}
                                 onChange={e => dictionaries[item].dictionary.changeDomain(e.currentTarget.value)}
                             />
@@ -28,7 +33,7 @@ const Dictionaries = ({ dictionaries }) => {
                                 onChange={e => dictionaries[item].dictionary.changeRange(e.currentTarget.value)}
                             />
                             <td><button>Remove</button></td>
-                        </tr>
+                        </tr> */}
                     </tbody>
                 )
             })}

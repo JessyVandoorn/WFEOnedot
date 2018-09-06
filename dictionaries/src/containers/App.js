@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import '../css/App.css';
 import AddDictionary from "../components/AddDictionary";
+import AddObjects from "../components/AddObjects";
 import Dictionaries from "../components/Dictionaries";
-import EditDictionaries from "../components/EditDictionaries";
 import {observer} from "mobx-react";
 
 class App extends Component {
@@ -16,7 +16,11 @@ class App extends Component {
         </article>
         <article>
           <h2>Overview dictionaries</h2>
-          <Dictionaries dictionaries={store.dictionaryArray}/>
+          <Dictionaries dictionaries={store.dictionaryArray} store={store}/>
+        </article>
+        <article>
+          <h2>Add Objects to dictionary</h2>
+          <AddObjects store={store} />
         </article>
       </div>
     );
