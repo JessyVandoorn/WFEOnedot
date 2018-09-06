@@ -14,9 +14,8 @@ class Store {
     }
 
     addDictionary = dictionary => {
-        this.dictionaryArray[`${dictionary.name}`] = {
-            dictionary
-        };
+        this.dictionaryArray[`${dictionary.name}`] = [dictionary];
+        //  this.dictionaryArray.push(dictionary);
         console.log(this.dictionaryArray);
     }
 
@@ -30,8 +29,8 @@ class Store {
         Object.keys(this.dictionaryArray).map(item => {
             if (item === dictionary.name) {
                 console.log(item);
-                console.log(this.dictionaryArray[item]);
-                Object.extend(item, {dictionary});
+                // this.dictionaryArray[item] = Object.assign(this.dictionaryArray[item] , {dictionary});
+                this.dictionaryArray[item].push(dictionary);
                 console.log(this.dictionaryArray);
             }
         })

@@ -18,24 +18,19 @@ const Dictionaries = ({ dictionaries, store }) => {
             </thead>
 
             {Object.keys(dictionaries).map((item, dictionary) => {
-                console.log(dictionaries[item].dictionary);
-                return (
-                    <tbody>
-                        <tr key={dictionaries[item].dictionary.name}>
-                            <td>{dictionaries[item].dictionary.name}</td>
-                            <td><button onClick={handleRemove}>Remove</button></td>
-                        </tr>
-                        {/* <tr key={dictionaries[item].dictionary.id}>
-                            <input type="text" value={dictionaries[item].dictionary.domain}
-                                onChange={e => dictionaries[item].dictionary.changeDomain(e.currentTarget.value)}
-                            />
-                            <input type="text" value={dictionaries[item].dictionary.range}
-                                onChange={e => dictionaries[item].dictionary.changeRange(e.currentTarget.value)}
-                            />
-                            <td><button>Remove</button></td>
-                        </tr> */}
-                    </tbody>
-                )
+                console.log(item);
+                console.log(dictionaries[item]);
+                {dictionaries[item].map(element => {
+                    console.log(element);
+                    return (
+                        <tbody>
+                            <tr key={element.name}>
+                                <td>{element.name}</td>
+                                <td><button onClick={handleRemove}>Remove</button></td>
+                            </tr>
+                        </tbody>
+                    )
+                })}
             })}
 
         </table>
