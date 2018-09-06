@@ -6,6 +6,7 @@ class Store {
 
     constructor(){
         this.addDictionary(new Dictionary("colors", "stonegrey", "darkgrey"));
+        this.addDictionary(new Dictionary("test", "darkstone", "greygrey"));
     }
 
     addDictionary = dictionary => {

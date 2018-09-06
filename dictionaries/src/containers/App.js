@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../css/App.css';
 import AddDictionary from "../components/AddDictionary";
 import Dictionaries from "../components/Dictionaries";
+import EditDictionaries from "../components/EditDictionaries";
 import {observer} from "mobx-react";
 
 class App extends Component {
