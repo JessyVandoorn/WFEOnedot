@@ -12,22 +12,27 @@ class Store {
     errorRange = "";
 
     constructor() {
-        this.addDictionary(new Dictionary( "stonegrey", "darkgrey"));
-        this.addDictionary(new Dictionary( "darkstone", "greygrey"));
+        this.addDictionary(new Dictionary("colors", "stonegrey", "darkgrey"));
+        this.addDictionary(new Dictionary("test", "darkstone", "greygrey"));
     }
 
     addDictionary = dictionary => {
         this.array[`${dictionary.name}`] = this.dictionaryArray;
         this.dictionaryArray.push( dictionary);
-        console.log(this.dictionaryArray);
-        console.log(this.array);
         
     }
 
     removeDictionary = dictionary => {
-        
+        console.log(dictionary);
         const index = this.dictionaryArray.indexOf(dictionary);
         this.dictionaryArray.splice(index, 1);
+        console.log(this.array);
+    }
+
+    removeObject = dictionary => {
+        console.log(dictionary);
+        delete this.array[dictionary];
+        console.log(this.array);
     }
 
     addObject = dictionary => {
@@ -49,7 +54,8 @@ decorate(Store, {
     dictionaryArray: observable,
     addDictionary: action,
     addObject: action,
-    error: observable
+    error: observable,
+    removeObject: action
 })
 
 const store = new Store();

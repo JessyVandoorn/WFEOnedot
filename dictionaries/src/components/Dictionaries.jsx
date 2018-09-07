@@ -8,34 +8,49 @@ const Dictionaries = ({ dictionaries, store }) => {
         store.removeDictionary(e);
     }
 
+    const handleRemoveDic = (e) => {
+        console.log(e);
+        store.removeObject(e);
+    }
+
     return (
         <div>
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Domain</th>
-                    <th>Range</th>
-                    <th>Remove</th>
-                </tr>
-            </thead>
-            <tbody>
-            {dictionaries.map(item => {
-                return(
-                    <tr key={item.id}>
-                        <td>{item.name}</td>
-                        <td><input type="text" value={item.domain}
-                                onChange={e => item.changeDomain(e.currentTarget.value)}
-                            /></td>
-                        <td><input type="text" value={item.range}
-                                onChange={e => item.changeRange(e.currentTarget.value)}
-                            /></td>
-                        <td><button key={item.id} onClick={() => handleRemove(item)}>Remove</button></td>
-                    </tr>
-                )
-            })}
-            </tbody>
-        </table>
+        
+        {Object.keys(dictionaries).map(items => {
+            console.log(items);
+            return(
+                <table>
+                    <thead>
+                        <tr>
+                            <th>
+                                Name
+                            </th>
+                            <th>Domain</th>
+                            <th>Range</th>
+                            <th>Remove Object</th>
+                            <th>Remove Dictionary</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {dictionaries[items].map(obj => {
+                           return(
+                            <tr key={obj.id}>
+                                <td>{obj.name}</td>
+                                <td><input type="text" value={obj.domain}
+                                        onChange={e => obj.changeDomain(e.currentTarget.value)}
+                                    /></td>
+                                <td><input type="text" value={obj.range}
+                                        onChange={e => obj.changeRange(e.currentTarget.value)}
+                                    /></td>
+                                <td><button key={obj.id} onClick={() => handleRemove(obj)}>Remove Object</button></td>
+                                <td><button onClick={() => handleRemoveDic(items)}>Remove Dictionary</button></td>
+                            </tr>
+                        ) 
+                        })}
+                    </tbody>
+                </table>
+            )
+        })}
         </div>
     );
 };

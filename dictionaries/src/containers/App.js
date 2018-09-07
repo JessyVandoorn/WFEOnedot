@@ -16,7 +16,7 @@ class App extends Component {
         </article>
         <article>
           <h2>Overview dictionaries</h2>
-          <Dictionaries dictionaries={store.dictionaryArray} store={store}/>
+          <Dictionaries dictionaries={store.array} store={store}/>
         </article>
         <article>
           <h2>Add elements to dictionary</h2>
