@@ -9,18 +9,20 @@ class Store {
     dictionaryArray = [];
 
     constructor() {
-        this.addDictionary(new Dictionary("colors", "stonegrey", "darkgrey"));
-        this.addDictionary(new Dictionary("test", "darkstone", "greygrey"));
+        this.addDictionary(new Dictionary( "stonegrey", "darkgrey"));
+        this.addDictionary(new Dictionary( "darkstone", "greygrey"));
     }
 
     addDictionary = dictionary => {
-        this.dictionaryArray[`${dictionary.name}`] = [dictionary];
-        //  this.dictionaryArray.push(dictionary);
+        //this.dictionaryArray[`${dictionary.name}`] = [dictionary];
+        this.dictionaryArray.push(dictionary);
         console.log(this.dictionaryArray);
     }
 
     removeDictionary = dictionary => {
-        this.dictionaryArray.remove(dictionary);
+        console.log(dictionary);
+        const index = this.dictionaryArray.indexOf(dictionary);
+        this.dictionaryArray.splice(index, 1);
         console.log(this.dictionaryArray);
     }
 

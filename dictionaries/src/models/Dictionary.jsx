@@ -2,9 +2,8 @@ import {decorate, observable, action} from "mobx";
 import uniqid from "uniqid";
 
 class Dictionary {
-    constructor(name, domain, range){
+    constructor(domain, range){
         this.id = uniqid();
-        this.name = name;
         this.domain = domain;
         this.range = range;
     }
@@ -21,7 +20,6 @@ class Dictionary {
 };
 
 decorate(Dictionary,{
-    name: observable,
     domain: observable,
     range: observable,
     changeDomain: action,

@@ -16,8 +16,17 @@ const AddObjects = ({store}) => {
 
     return (
         <form onSubmit={handleSubmitForm}>
-            <label htmlFor="">Name Directionary
-                <input type="text" name="name" />
+            {/* <label htmlFor="">Name Directionary
+                <select name="name" id="">
+                {Object.keys(store.dictionaryArray).map(item => {
+                    return(
+                        <option value="item">{item}</option>
+                    )
+                })}
+                </select>
+            </label> */}
+            <label htmlFor="">Name
+                <input type="text" name="name"/>
             </label>
             <label htmlFor="">Domain
                 <input type="text" name="domain" />
