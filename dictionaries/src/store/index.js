@@ -7,6 +7,9 @@ import {
 
 class Store {
     dictionaryArray = [];
+    array = {};
+    errorDomain = "";
+    errorRange = "";
 
     constructor() {
         this.addDictionary(new Dictionary( "stonegrey", "darkgrey"));
@@ -14,12 +17,30 @@ class Store {
     }
 
     addDictionary = dictionary => {
-        this.dictionaryArray.push(dictionary);
+        this.array[`${dictionary.name}`] = this.dictionaryArray;
+        this.dictionaryArray.push( dictionary);
+        console.log(this.dictionaryArray);
+        console.log(this.array);
+        
     }
 
     removeDictionary = dictionary => {
+        
         const index = this.dictionaryArray.indexOf(dictionary);
         this.dictionaryArray.splice(index, 1);
+    }
+
+    addObject = dictionary => {
+        console.log(dictionary);
+        Object.keys(this.array).map(item => {
+            if(item === dictionary.name) {
+                console.log(item);
+                console.log(this.dictionaryArray);
+                this.dictionaryArray.push(dictionary);
+                this.array[item] = this.dictionaryArray;
+                console.log(this.array[item]);
+            }
+        })
     }
 
 };
@@ -27,7 +48,8 @@ class Store {
 decorate(Store, {
     dictionaryArray: observable,
     addDictionary: action,
-    addObject: action
+    addObject: action,
+    error: observable
 })
 
 const store = new Store();

@@ -4,8 +4,6 @@ import { observer } from "mobx-react";
 const Dictionaries = ({ dictionaries, store }) => {
 
     const handleRemove = (e) => {
-        console.log(e);
-        //console.log(id);
         const id = e;
         store.removeDictionary(e);
     }
@@ -15,6 +13,7 @@ const Dictionaries = ({ dictionaries, store }) => {
         <table>
             <thead>
                 <tr>
+                    <th>Name</th>
                     <th>Domain</th>
                     <th>Range</th>
                     <th>Remove</th>
@@ -24,6 +23,7 @@ const Dictionaries = ({ dictionaries, store }) => {
             {dictionaries.map(item => {
                 return(
                     <tr key={item.id}>
+                        <td>{item.name}</td>
                         <td><input type="text" value={item.domain}
                                 onChange={e => item.changeDomain(e.currentTarget.value)}
                             /></td>
