@@ -18,7 +18,7 @@ const Dictionaries = ({ dictionaries, store }) => {
             {Object.keys(store.array).map(items => {
                 console.log(items);
                 return (
-                    <table>
+                    <table key={items}>
                         <thead>
                             <tr>
                                 <th key={items}>
@@ -48,29 +48,6 @@ const Dictionaries = ({ dictionaries, store }) => {
                     </table>
                 )
             })}
-            {/* {dictionaries.map(item => {
-            return(
-                <table>
-                    <thead>
-                        <tr>
-                            <th>{item.name}</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr key={item.id}>
-                        <td><input type="text" value={item.domain}
-                                        onChange={e => item.changeDomain(e.currentTarget.value)}
-                                    /></td>
-                                <td><input type="text" value={item.range}
-                                        onChange={e => item.changeRange(e.currentTarget.value)}
-                                    /></td>
-                                <td><button key={item.id} onClick={() => handleRemove(item)}>Remove Object</button></td>
-                                {/* <td><button onClick={ handleRemoveDic}>Remove Dictionary</button></td>  */}
-            {/* </tr>
-                    </tbody>
-                </table>
-            )
-        })} */} */}
         </div>
     );
 };

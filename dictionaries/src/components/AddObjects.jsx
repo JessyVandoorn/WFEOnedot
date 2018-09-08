@@ -14,29 +14,52 @@ const AddObjects = ({store}) => {
         }
     }
 
+    const handleInputDomain = (e) => {
+        const lastElement = store.dictionaryArray.length-1;
+        if(store.dictionaryArray[lastElement].domain === e.currentTarget.value){
+            store.changeErrorDomain();
+            store.changeButtonTrue();
+        } else if (store.dictionaryArray[lastElement].range === e.currentTarget.value){
+            store.changeErrorRange();
+            store.changeButtonTrue();
+        } else {
+            store.changeButtonFalse();
+        }
+    }
+
+    const handleInputRange = (e) => {
+        const lastElement = store.dictionaryArray.length-1;
+        if(store.dictionaryArray[lastElement].range === e.currentTarget.value){
+            store.changeErrorDictionary();
+            store.changeButtonTrue();
+        } else {
+            store.changeButtonFalse(); 
+        }
+    }
+
     return (
+        <div>
+            <p>{store.errorDictionary}</p>
         <form onSubmit={handleSubmitForm}>
-            {/* <label htmlFor="">Name Directionary
+            <label htmlFor="">Name Directionary
                 <select name="name" id="">
-                {Object.keys(store.dictionaryArray).map(item => {
+                {Object.keys(store.array).map(item => {
                     return(
-                        <option value="item">{item}</option>
+                        <option value={item} key={item} name={item}>{item}</option>
                     )
                 })}
                 </select>
-            </label> */}
-            <label htmlFor="">Name
-                <input type="text" name="name"/>
             </label>
             <label htmlFor="">Domain
-                <input type="text" name="domain" />
+                <input type="text" name="domain" onInput={handleInputDomain}/>
             </label>
-
+                <p>{store.errorDomain}</p>
             <label htmlFor="">Range
-                <input type="text" name="range" />
+                <input type="text" name="range" onInput={handleInputRange}/>
             </label>
-            <input type="submit" value="add" />
+            <input type="submit" value="add" disabled={store.disabled}/>
         </form>
+        </div>
     )
 };
 
