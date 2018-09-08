@@ -15,26 +15,26 @@ const AddObjects = ({store}) => {
     }
 
     const handleInputDomain = (e) => {
-        const lastElement = store.dictionaryArray.length-1;
-        if(store.dictionaryArray[lastElement].domain === e.currentTarget.value){
-            store.changeErrorDomain();
-            store.changeButtonTrue();
-        } else if (store.dictionaryArray[lastElement].range === e.currentTarget.value){
-            store.changeErrorRange();
-            store.changeButtonTrue();
-        } else {
-            store.changeButtonFalse();
-        }
+        // const lastElement = store.dictionaryArray.length-1;
+        // if(store.dictionaryArray[lastElement].domain === e.currentTarget.value){
+        //     store.changeErrorDomain();
+        //     store.changeButtonTrue();
+        // } else if (store.dictionaryArray[lastElement].range === e.currentTarget.value){
+        //     store.changeErrorRange();
+        //     store.changeButtonTrue();
+        // } else {
+        //     store.changeButtonFalse();
+        // }
     }
 
     const handleInputRange = (e) => {
-        const lastElement = store.dictionaryArray.length-1;
-        if(store.dictionaryArray[lastElement].range === e.currentTarget.value){
-            store.changeErrorDictionary();
-            store.changeButtonTrue();
-        } else {
-            store.changeButtonFalse(); 
-        }
+        // const lastElement = store.dictionaryArray.length-1;
+        // if(store.dictionaryArray[lastElement].range === e.currentTarget.value){
+        //     store.changeErrorDictionary();
+        //     store.changeButtonTrue();
+        // } else {
+        //     store.changeButtonFalse(); 
+        // }
     }
 
     return (
@@ -57,7 +57,7 @@ const AddObjects = ({store}) => {
             <label htmlFor="">Range
                 <input type="text" name="range" onInput={handleInputRange}/>
             </label>
-            <input type="submit" value="add" disabled={store.disabled}/>
+            <input type="submit" value="add" />
         </form>
         </div>
     )

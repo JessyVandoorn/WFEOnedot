@@ -1,17 +1,12 @@
 import Dictionary from '../models/Dictionary';
-import {
-    decorate,
-    observable,
-    action
-} from 'mobx';
+import {decorate, observable, action} from 'mobx';
 
 class Store {
-    dictionaryArray = [];
     array = {};
     errorDictionary = "";
     errorDomain = "";
-    errorRange ="";
-    disabled = true;
+    errorRange = "";
+    disabled = false;
 
     constructor() {
         this.addDictionary(new Dictionary("colors", "stonegrey", "darkgrey"));
@@ -19,27 +14,30 @@ class Store {
     }
 
     addDictionary = (dictionary, dictionaryName) => {
-        if(dictionaryName){
+        if (dictionaryName) {
             this.errorDictionary = "This Domain already exists, use the add element form";
-            console.log(this.errorDictionary);
         } else {
-            this.array[`${dictionary.name}`] = this.dictionaryArray;
-        this.dictionaryArray.push( dictionary);
-        console.log(this.array);
+            
+            this.array[`${dictionary.name}`] = [];
+            observable(this.array[`${dictionary.name}`]);
+            this.array[`${dictionary.name}`].push(dictionary);
+            
+            console.log(this.array);
         }
-        
-    }
 
-    removeDictionary = dictionary => {
-        console.log(dictionary);
-        const index = this.dictionaryArray.indexOf(dictionary);
-        this.dictionaryArray.splice(index, 1);
     }
 
     removeObject = dictionary => {
-        console.log(dictionary);
+        Object.keys(this.array).map(item => {
+            if (item === dictionary.name) {
+                const index = this.array[item].indexOf(dictionary);
+                this.array[item].splice(index, 1);
+            }
+        })
+    }
+
+    removeDictionary = dictionary => {
         delete this.array[dictionary];
-        console.log(this.array);
     }
 
     changeButtonFalse = () => {
@@ -63,26 +61,18 @@ class Store {
     }
 
     addObject = dictionary => {
-        console.log(dictionary);
-        Object.keys(this.array).map(item => {
-            if(item === dictionary.name) {
-                console.log(item);
-                console.log(this.dictionaryArray);
-                this.dictionaryArray.push(dictionary);
-                // this.array[item] = this.dictionaryArray;
-                console.log(this.array[item]);
-            }
-        })
+        this.array[`${dictionary.name}`].push(dictionary);
+        console.log(this.array[`${dictionary.name}`]);
+        observable(this.array[`${dictionary.name}`]);
     }
 
 };
 
 decorate(Store, {
-    dictionaryArray: observable,
-    array: observable,
     addDictionary: action,
     addObject: action,
     removeObject: action,
+    array: observable,
     errorDomain: observable,
     errorDictionary: observable,
     errorRange: observable,
