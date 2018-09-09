@@ -15,26 +15,45 @@ const AddObjects = ({store}) => {
     }
 
     const handleInputDomain = (e) => {
-        // const lastElement = store.dictionaryArray.length-1;
-        // if(store.dictionaryArray[lastElement].domain === e.currentTarget.value){
-        //     store.changeErrorDomain();
-        //     store.changeButtonTrue();
-        // } else if (store.dictionaryArray[lastElement].range === e.currentTarget.value){
-        //     store.changeErrorRange();
-        //     store.changeButtonTrue();
-        // } else {
-        //     store.changeButtonFalse();
-        // }
+        let lastElement = store.array[store.nameDictionary]; 
+        if(lastElement.length = 1){
+            lastElement = store.array[store.nameDictionary];  
+        } else {
+           lastElement = store.array[store.nameDictionary]-1; 
+        }
+        lastElement.map(item => {
+            if(item.domain === e.currentTarget.value){
+                store.changeErrorDomain();
+                store.changeButtonTrue();
+            } else if (item.range === e.currentTarget.value){
+                    store.changeErrorRange();
+            store.changeButtonTrue();
+            } else {
+                store.changeButtonFalse();
+            }
+        })
     }
 
     const handleInputRange = (e) => {
-        // const lastElement = store.dictionaryArray.length-1;
-        // if(store.dictionaryArray[lastElement].range === e.currentTarget.value){
-        //     store.changeErrorDictionary();
-        //     store.changeButtonTrue();
-        // } else {
-        //     store.changeButtonFalse(); 
-        // }
+        let lastElement = store.array[store.nameDictionary]; 
+        if(lastElement.length = 1){
+            lastElement = store.array[store.nameDictionary];  
+        } else {
+           lastElement = store.array[store.nameDictionary]-1; 
+        }
+        lastElement.map(item => {
+            if(item.range === e.currentTarget.value){
+                store.changeErrorDictionary();
+                store.changeButtonTrue();
+            } else {
+                store.changeButtonFalse();
+            }
+        })
+    }
+
+    const handleName = (e) => {
+        store.nameDictionary = e.currentTarget.value;
+        console.log(e.currentTarget.value);
     }
 
     return (
@@ -42,7 +61,7 @@ const AddObjects = ({store}) => {
             <p>{store.errorDictionary}</p>
         <form onSubmit={handleSubmitForm}>
             <label htmlFor="">Name Directionary
-                <select name="name" id="">
+                <select name="name" id="" onChange={handleName}>
                 {Object.keys(store.array).map(item => {
                     return(
                         <option value={item} key={item} name={item}>{item}</option>

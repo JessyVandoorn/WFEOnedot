@@ -7,6 +7,7 @@ class Store {
     errorDomain = "";
     errorRange = "";
     disabled = false;
+    nameDictionary = "";
 
     constructor() {
         this.addDictionary(new Dictionary("colors", "stonegrey", "darkgrey"));
@@ -19,9 +20,8 @@ class Store {
         } else {
             
             this.array[`${dictionary.name}`] = [];
-            observable(this.array[`${dictionary.name}`]);
+            //observable(this.array[`${dictionary.name}`]);
             this.array[`${dictionary.name}`].push(dictionary);
-            
             console.log(this.array);
         }
 
@@ -72,7 +72,6 @@ decorate(Store, {
     addDictionary: action,
     addObject: action,
     removeObject: action,
-    array: observable,
     errorDomain: observable,
     errorDictionary: observable,
     errorRange: observable,
