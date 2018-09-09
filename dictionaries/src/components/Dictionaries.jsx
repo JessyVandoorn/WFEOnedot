@@ -34,8 +34,12 @@ const Dictionaries = ({ store }) => {
                             {store.array[items].map(obj => {
                                 return(
                                 <tr key={obj.id}>
-                                    <td>{obj.domain}</td>
-                                    <td>{obj.range}</td>
+                                    <td><input type="text" value={obj.domain}
+                                onChange={e => obj.changeDomain(e.currentTarget.value)}
+                            /></td>
+                                    <td><td><input type="text" value={obj.range}
+                                onChange={e => obj.changeRange(e.currentTarget.value)}
+                            /></td></td>
                                     <td><button onClick={() => handleRemoveObj(obj)}>Remove Element</button></td>
                                 </tr>
                                 )

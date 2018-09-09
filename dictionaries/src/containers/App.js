@@ -6,6 +6,7 @@ import AddObjects from "../components/AddObjects";
 import {observer} from "mobx-react";
 
 class App extends Component {
+
   render() {
     const {store} = this.props;
     return (

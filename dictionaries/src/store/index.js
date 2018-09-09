@@ -1,5 +1,5 @@
 import Dictionary from '../models/Dictionary';
-import {decorate, observable, action} from 'mobx';
+import {decorate, observable, action, extendObservable} from 'mobx';
 
 class Store {
     array = {};
@@ -20,8 +20,8 @@ class Store {
         } else {
             
             this.array[`${dictionary.name}`] = [];
-            //observable(this.array[`${dictionary.name}`]);
-            this.array[`${dictionary.name}`].push(dictionary);
+            extendObservable(this.array[`${dictionary.name}`], this.array[`${dictionary.name}`].push(dictionary));
+            //this.array[`${dictionary.name}`].push(dictionary);
             console.log(this.array);
         }
 
@@ -61,9 +61,9 @@ class Store {
     }
 
     addObject = dictionary => {
-        this.array[`${dictionary.name}`].push(dictionary);
+        //this.array[`${dictionary.name}`].push(dictionary);
         console.log(this.array[`${dictionary.name}`]);
-        observable(this.array[`${dictionary.name}`]);
+        extendObservable(this.array[`${dictionary.name}`], this.array[`${dictionary.name}`].push(dictionary));
     }
 
 };
@@ -76,7 +76,10 @@ decorate(Store, {
     errorDictionary: observable,
     errorRange: observable,
     disabled: observable,
-    changeButton: action
+    changeButton: action, 
+    array: observable,
+    changeDomain: action,
+    changeRange: action
 })
 
 const store = new Store();
